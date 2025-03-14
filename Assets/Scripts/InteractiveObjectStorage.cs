@@ -6,7 +6,7 @@ public class InteractiveObjectStorage : MonoBehaviour
 {
     private List<DraggableObject> _fallers = new List<DraggableObject>();
 
-    private void Start()
+    private void Awake()
     {
         AddDraggableObjects();
     }
