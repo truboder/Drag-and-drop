@@ -2,22 +2,15 @@ using UnityEngine;
 
 public class DraggableObject : MonoBehaviour
 {
-    [SerializeField] private float maxAllowedY = 4f;
+    public bool IsCaptured { get; private set; }
 
-    public void Move(Vector2 newPosition)
+    public void ChangeStateToCaptured()
     {
-        transform.position = new Vector2(newPosition.x, newPosition.y);
+        IsCaptured = true;
     }
 
-    public void Release()
+    public void ChangeStateToUncaptured()
     {
-        Vector3 position = transform.position;
-
-        if (position.y > maxAllowedY)
-        {
-            position.y = maxAllowedY;
-        }
-
-        transform.position = position;
+        IsCaptured = false;
     }
 }

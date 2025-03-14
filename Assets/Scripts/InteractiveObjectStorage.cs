@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class InteractiveObjectStorage : MonoBehaviour
@@ -12,10 +13,13 @@ public class InteractiveObjectStorage : MonoBehaviour
 
     private void AddDraggableObjects()
     {
-        DraggableObject draggableObject = FindObjectOfType<DraggableObject>();
+        DraggableObject[] draggableObjects = FindObjectsOfType<DraggableObject>();
 
+        _fallers = draggableObjects.ToList();
+    }
 
-
-        _fallers.Add(draggableObject);
+    public List<DraggableObject> GetFallers()
+    {
+        return _fallers;
     }
 }

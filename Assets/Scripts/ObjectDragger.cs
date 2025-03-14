@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ObjectDragger : MonoBehaviour
 {
     [SerializeField] private Camera _camera;
+    [SerializeField] private float _maxAllowedY = 4f;
 
     private DraggableObject _selectedObject;
 
@@ -13,7 +15,7 @@ public class ObjectDragger : MonoBehaviour
         HandleDragging();
     }
 
-    private void HandleDragging()
+    public void HandleDragging()
     {
         if (Input.GetMouseButtonDown(_mousseButtonTrigger))
         {
@@ -27,20 +29,29 @@ public class ObjectDragger : MonoBehaviour
                 if (draggableObject != null)
                 {
                     _selectedObject = draggableObject;
+                    _selectedObject.ChangeStateToCaptured();
                 }
-
             }
         }
 
         if (Input.GetMouseButton(_mousseButtonTrigger) && _selectedObject != null)
         {
             Vector2 mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
-            _selectedObject.Move(mousePosition);
+            _selectedObject.transform.position = mousePosition;
         }
 
         if (Input.GetMouseButtonUp(_mousseButtonTrigger))
         {
-            _selectedObject.Release();
+            Vector3 position = _selectedObject.transform.position;
+
+            if (_selectedObject.transform.position.y > _maxAllowedY)
+            {
+                position.y = _maxAllowedY;
+            }
+
+            _selectedObject.transform.position = position;
+            _selectedObject.ChangeStateToUncaptured();
+
             _selectedObject = null;
         }
     }
