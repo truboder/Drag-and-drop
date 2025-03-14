@@ -6,7 +6,7 @@ public class InteractiveObjectStorage : MonoBehaviour
 {
     private List<DraggableObject> _fallers = new List<DraggableObject>();
 
-    private void Awake()
+    private void Start()
     {
         AddDraggableObjects();
     }
@@ -14,6 +14,11 @@ public class InteractiveObjectStorage : MonoBehaviour
     private void AddDraggableObjects()
     {
         DraggableObject[] draggableObjects = FindObjectsOfType<DraggableObject>();
+
+        if (draggableObjects.Length == 0)
+        {
+            Debug.LogWarning("No DraggableObjects found!");
+        }
 
         _fallers = draggableObjects.ToList();
     }
