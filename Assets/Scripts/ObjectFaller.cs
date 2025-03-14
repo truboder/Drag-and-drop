@@ -5,19 +5,22 @@ public class ObjectFaller : MonoBehaviour
     [SerializeField] private float gravity = 4f;
     [SerializeField] private float groundY = 0f;
 
-    void Update()
+    private void Update()
     {
         ApplyGravity();
     }
 
     private void ApplyGravity()
     {
-        Collider2D[] objects = FindObjectsOfType<Collider2D>();
+        DraggableObject[] objects = FindObjectsOfType<DraggableObject>();
 
         foreach (var obj in objects)
         {
             DraggableObject draggableObject = obj.GetComponent<DraggableObject>();
-            if (draggableObject == null) continue;
+            if (draggableObject == null) 
+            {
+                continue;
+            }
 
             Vector3 position = obj.transform.position;
 
