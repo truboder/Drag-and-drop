@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9066076696657873959}
   - component: {fileID: 2479446143257132461}
-  - component: {fileID: 346192131738129186}
-  - component: {fileID: 3749005608779014460}
+  - component: {fileID: -7373963327400844981}
+  - component: {fileID: 4199486618954713573}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &346192131738129186
+--- !u!61 &-7373963327400844981
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,7 +131,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &3749005608779014460
+--- !u!114 &4199486618954713573
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,6 +140,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4135769063514946972}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c4c6a37fde70b44689773d2c682e4b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 092b459d1d7d9b7488d57c925a902513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxAllowedY: 4
