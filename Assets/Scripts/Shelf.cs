@@ -1,18 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Shelf : MonoBehaviour
 {
-    private List<DraggableObject> _draggableObjects = new List<DraggableObject>();
+    [SerializeField] private Vector3 _objectPosition;
 
-    private void Fold()
+    private int _mousseButtonTrigger = 0;
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        DraggableObject draggableObject = collision.GetComponent<DraggableObject>();
 
-    }
-
-    private DraggableObject Get()
-    {
-        return null;
+        if (draggableObject != null && !draggableObject.IsOnShelf)
+        {
+            if (Input.GetMouseButtonUp(_mousseButtonTrigger))
+            {
+                draggableObject.PlaceOnShelf(_objectPosition);
+            }
+        }
     }
 }
