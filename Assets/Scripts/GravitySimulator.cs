@@ -5,8 +5,7 @@ public class GravitySimulator : MonoBehaviour
 {
     [SerializeField] private float _gravity = 4f;
     [SerializeField] private float _groundY = 0f;
-
-    private InteractiveObjectStorage _objectStorage = new InteractiveObjectStorage();
+    [SerializeField] private InteractiveObjectStorage _objectStorage;
 
     private void Update()
     {
@@ -15,18 +14,11 @@ public class GravitySimulator : MonoBehaviour
 
     private void ApplyGravity()
     {
-        //List<DraggableObject> objects = _objectStorage.GetFallers();
+        List<DraggableObject> objects = _objectStorage.GetFallers();
 
-        DraggableObject[] objects3 = FindObjectsOfType<DraggableObject>();
-
-        foreach (DraggableObject obj in objects3)
+        foreach (DraggableObject obj in objects)
         {
             Vector3 position = obj.transform.position;
-
-            //if (obj.IsCaptured)
-            //{
-            //    continue;
-            //}
 
             if (position.y <= _groundY || obj.IsCaptured)
             {
