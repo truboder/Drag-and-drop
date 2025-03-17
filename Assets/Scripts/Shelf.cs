@@ -4,18 +4,12 @@ public class Shelf : MonoBehaviour
 {
     [SerializeField] private Vector3 _objectPosition;
 
-    private int _mousseButtonTrigger = 0;
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void PlaceObjectOnShelf(DraggableObject draggableObject)
     {
-        DraggableObject draggableObject = collision.GetComponent<DraggableObject>();
+        Vector3 shelfPlace = new Vector3(_objectPosition.x, _objectPosition.y, _objectPosition.z);
 
-        if (draggableObject != null && !draggableObject.IsOnShelf)
-        {
-            if (Input.GetMouseButtonUp(_mousseButtonTrigger))
-            {
-                draggableObject.PlaceOnShelf(_objectPosition);
-            }
-        }
+        draggableObject.SetState(DraggableObjectState.OnShelf);
+
+        draggableObject.transform.position = shelfPlace;
     }
 }

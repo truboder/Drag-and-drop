@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InteractiveObjectStorage : MonoBehaviour
 {
-    private List<DraggableObject> _fallers = new List<DraggableObject>();
+    private List<DraggableObject> _draggableObjects = new List<DraggableObject>();
 
     private void Start()
     {
@@ -20,11 +20,11 @@ public class InteractiveObjectStorage : MonoBehaviour
             Debug.LogWarning("No DraggableObjects found!");
         }
 
-        _fallers = draggableObjects.ToList();
+        _draggableObjects = draggableObjects.ToList();
     }
 
-    public List<DraggableObject> GetFallers()
+    public List<DraggableObject> GetDraggableObjects()
     {
-        return _fallers;
+        return _draggableObjects;
     }
 }

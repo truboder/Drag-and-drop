@@ -29,7 +29,7 @@ public class ObjectDragger : MonoBehaviour
                 if (draggableObject != null)
                 {
                     _selectedObject = draggableObject;
-                    _selectedObject.ChangeStateToCaptured();
+                    _selectedObject.SetState(DraggableObjectState.Captured);
                 }
             }
         }
@@ -50,8 +50,7 @@ public class ObjectDragger : MonoBehaviour
             }
 
             _selectedObject.transform.position = position;
-            _selectedObject.ChangeStateToUncaptured();
-
+            _selectedObject.SetState(DraggableObjectState.Idle);
             _selectedObject = null;
         }
     }
