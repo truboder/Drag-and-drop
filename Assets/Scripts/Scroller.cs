@@ -6,6 +6,8 @@ public class Scroller : MonoBehaviour
     [SerializeField] private Vector2 _cameraBoundsX = new Vector2(-10f, 10f);
     [SerializeField] private Vector2 _cameraBoundsY = new Vector2(-5f, 5f);
 
+    [SerializeField] private ObjectDragger _objectDragger;
+
     private Vector3 _dragOrigin;
     private int _mousseButtonTrigger = 0;
 
@@ -21,7 +23,7 @@ public class Scroller : MonoBehaviour
             _dragOrigin = GetMouseWorldPosition();
         }
 
-        if (Input.GetMouseButton(_mousseButtonTrigger))
+        if (Input.GetMouseButton(_mousseButtonTrigger) && _objectDragger.IsThereTarget == false)
         {
             Vector3 difference = _dragOrigin - GetMouseWorldPosition();
             transform.position += difference;

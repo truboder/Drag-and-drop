@@ -8,6 +8,8 @@ public class ObjectDragger : MonoBehaviour
 
     private DraggableObject _selectedObject;
 
+    public bool IsThereTarget { get; private set; }
+
     private int _mousseButtonTrigger = 0;
 
     private void Update()
@@ -30,7 +32,7 @@ public class ObjectDragger : MonoBehaviour
                 {
                     _selectedObject = draggableObject;
                     _selectedObject.SetState(DraggableObjectState.Captured);
-
+                    IsThereTarget = true;
                     _selectedObject.SetSortingOrder(_draggingSortingOrder);
                 }
             }
@@ -54,6 +56,8 @@ public class ObjectDragger : MonoBehaviour
             _selectedObject.transform.position = position;
             _selectedObject.SetState(DraggableObjectState.Idle);
             _selectedObject.SetSortingOrder(0);
+
+            IsThereTarget = false;
             _selectedObject = null;
         }
     }
