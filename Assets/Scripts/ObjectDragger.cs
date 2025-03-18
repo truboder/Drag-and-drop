@@ -1,10 +1,10 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 public class ObjectDragger : MonoBehaviour
 {
     [SerializeField] private Camera _camera;
     [SerializeField] private float _maxAllowedY = 4f;
+    [SerializeField] private int _draggingSortingOrder = 10;
 
     private DraggableObject _selectedObject;
 
@@ -30,6 +30,8 @@ public class ObjectDragger : MonoBehaviour
                 {
                     _selectedObject = draggableObject;
                     _selectedObject.SetState(DraggableObjectState.Captured);
+
+                    _selectedObject.SetSortingOrder(_draggingSortingOrder);
                 }
             }
         }
@@ -51,6 +53,7 @@ public class ObjectDragger : MonoBehaviour
 
             _selectedObject.transform.position = position;
             _selectedObject.SetState(DraggableObjectState.Idle);
+            _selectedObject.SetSortingOrder(0);
             _selectedObject = null;
         }
     }
