@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DraggableObject : MonoBehaviour
 {
-    public DraggableObjectState State; /*{ get; private set; }*/
+    public DraggableObjectState State { get; private set; }
 
     [SerializeField] SpriteRenderer _spriteRenderer;
 

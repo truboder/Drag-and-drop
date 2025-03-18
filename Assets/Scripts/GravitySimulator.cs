@@ -6,7 +6,7 @@ public class GravitySimulator : MonoBehaviour
     [SerializeField] private float _gravity = 4f;
     [SerializeField] private float _groundY = 0f;
     [SerializeField] private InteractiveObjectStorage _objectStorage;
-    [SerializeField] private LayerMask _shelfLayer;
+    //[SerializeField] private LayerMask _shelfLayer;
 
     private void Update()
     {
