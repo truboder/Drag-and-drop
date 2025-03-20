@@ -7,17 +7,16 @@ public class ObjectDragger : MonoBehaviour
     [SerializeField] private int _draggingSortingOrder = 10;
 
     private DraggableObject _selectedObject;
-
-    public bool IsThereTarget { get; private set; }
-
     private int _mousseButtonTrigger = 0;
+
+    public bool HasTarget { get; private set; }
 
     private void Update()
     {
         HandleDragging();
     }
 
-    public void HandleDragging()
+    private void HandleDragging()
     {
         if (Input.GetMouseButtonDown(_mousseButtonTrigger))
         {
@@ -32,7 +31,7 @@ public class ObjectDragger : MonoBehaviour
                 {
                     _selectedObject = draggableObject;
                     _selectedObject.SetState(DraggableObjectState.Captured);
-                    IsThereTarget = true;
+                    HasTarget = true;
                     _selectedObject.SetSortingOrder(_draggingSortingOrder);
                 }
             }
@@ -57,7 +56,7 @@ public class ObjectDragger : MonoBehaviour
             _selectedObject.SetState(DraggableObjectState.Idle);
             _selectedObject.SetSortingOrder(0);
 
-            IsThereTarget = false;
+            HasTarget = false;
             _selectedObject = null;
         }
     }

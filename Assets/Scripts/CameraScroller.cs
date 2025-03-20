@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Scroller : MonoBehaviour
+public class CameraScroller : MonoBehaviour
 {
     [SerializeField] private float _scrollSpeed = 5f;
     [SerializeField] private Vector2 _cameraBoundsX = new Vector2(-10f, 10f);
@@ -23,7 +23,7 @@ public class Scroller : MonoBehaviour
             _dragOrigin = GetMouseWorldPosition();
         }
 
-        if (Input.GetMouseButton(_mousseButtonTrigger) && _objectDragger.IsThereTarget == false)
+        if (Input.GetMouseButton(_mousseButtonTrigger) && _objectDragger.HasTarget == false)
         {
             Vector3 difference = _dragOrigin - GetMouseWorldPosition();
             transform.position += difference;

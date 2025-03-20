@@ -3,6 +3,7 @@ using UnityEngine;
 public class Shelf : MonoBehaviour
 {
     [SerializeField] private Vector3 _objectPosition;
+    [SerializeField] private Transform _objectPositionn;
     [SerializeField] private int _shelfSortingOrder = 1;
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -17,7 +18,7 @@ public class Shelf : MonoBehaviour
 
     public void PlaceObjectOnShelf(DraggableObject draggableObject)
     {
-        Vector3 shelfPlace = new Vector3(_objectPosition.x, _objectPosition.y, _objectPosition.z);
+        Vector3 shelfPlace = new Vector3(_objectPositionn.position.x, _objectPositionn.position.y, _objectPositionn.position.z);
 
         draggableObject.SetState(DraggableObjectState.OnShelf);
 

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class InteractiveObjectStorage : MonoBehaviour
+public class DraggableObjectContainer : MonoBehaviour
 {
     private List<DraggableObject> _draggableObjects = new List<DraggableObject>();
 
