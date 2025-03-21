@@ -4,7 +4,7 @@ public class DraggableObject : MonoBehaviour
 {
     [SerializeField] SpriteRenderer _spriteRenderer;
 
-    public DraggableObjectState State;
+    public DraggableObjectState State {  get; private set; }
 
     public void SetState(DraggableObjectState newState)
     {
@@ -16,7 +16,6 @@ public class DraggableObject : MonoBehaviour
         {
             Debug.Log("Переход запрещен");
         }
-
     }
 
     public void SetSortingOrder(int order)
