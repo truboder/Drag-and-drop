@@ -19,9 +19,18 @@ public class Shelf : MonoBehaviour
     {
         Vector3 shelfPlace = new Vector3(_objectPosition.position.x, _objectPosition.position.y, _objectPosition.position.z);
 
+        MoveObjectWithZ(draggableObject, shelfPlace);
         draggableObject.SetState(DraggableObjectState.OnShelf);
 
         draggableObject.transform.position = shelfPlace;
-        //draggableObject.SetSortingOrder(_shelfSortingOrder);
+        draggableObject.SetSortingOrder(_shelfSortingOrder);
+    }
+
+    private void MoveObjectWithZ(DraggableObject draggableObject, Vector3 newPosition)
+    {
+        float currentZ = draggableObject.transform.position.z;
+
+        newPosition.z = currentZ;
+        draggableObject.transform.position = newPosition;
     }
 }
