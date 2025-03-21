@@ -41,7 +41,6 @@ public class CameraScroller : MonoBehaviour
         return Camera.main.ScreenToWorldPoint(mousePosition);
     }
 }
-
  
 [Serializable]
 public struct Range<T> where T : IComparable<T>

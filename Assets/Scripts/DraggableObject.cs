@@ -35,7 +35,7 @@ public class DraggableObject : MonoBehaviour
                 return newState == DraggableObjectState.Dropped || newState == DraggableObjectState.OnShelf || newState == DraggableObjectState.OnGround;
 
             case DraggableObjectState.Dropped:
-                return newState == DraggableObjectState.Captured || newState == DraggableObjectState.OnShelf /*|| newState == DraggableObjectState.OnGround*/;
+                return newState == DraggableObjectState.Captured || newState == DraggableObjectState.OnShelf || newState == DraggableObjectState.OnGround;
 
             case DraggableObjectState.OnShelf:
                 return newState == DraggableObjectState.Captured;
