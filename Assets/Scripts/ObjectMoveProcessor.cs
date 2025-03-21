@@ -29,7 +29,7 @@ public class ObjectMoveProcessor : MonoBehaviour
 
         if (Input.GetMouseButton(_mousseButtonTrigger) && _selectedObject != null)
         {
-            _selectedObject.transform.position = _camera.ScreenToWorldPoint(Input.mousePosition);
+            MoveObjectWithZ(_selectedObject, _camera.ScreenToWorldPoint(Input.mousePosition));
         }
 
         if (Input.GetMouseButtonUp(_mousseButtonTrigger))
@@ -42,14 +42,20 @@ public class ObjectMoveProcessor : MonoBehaviour
     {
         if (_selectedObject != null)
         {
-            Vector3 position = _selectedObject.transform.position;
-
-            _selectedObject.transform.position = position;
+            MoveObjectWithZ(_selectedObject, _selectedObject.transform.position);
             _selectedObject.SetSortingOrder(0);
             _selectedObject.SetState(DraggableObjectState.Dropped);
         }
 
         HasTarget = false;
         _selectedObject = null;
+    }
+
+    private void MoveObjectWithZ(DraggableObject draggableObject, Vector3 newPosition)
+    {
+        float currentZ = draggableObject.transform.position.z;
+
+        newPosition.z = currentZ;
+        draggableObject.transform.position = newPosition;
     }
 }

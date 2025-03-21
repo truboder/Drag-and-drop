@@ -22,6 +22,6 @@ public class Shelf : MonoBehaviour
         draggableObject.SetState(DraggableObjectState.OnShelf);
 
         draggableObject.transform.position = shelfPlace;
-        draggableObject.SetSortingOrder(_shelfSortingOrder);
+        //draggableObject.SetSortingOrder(_shelfSortingOrder);
     }
 }
