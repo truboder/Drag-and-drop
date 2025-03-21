@@ -4,11 +4,19 @@ public class DraggableObject : MonoBehaviour
 {
     [SerializeField] SpriteRenderer _spriteRenderer;
 
-    public DraggableObjectState State { get; private set; }
+    public DraggableObjectState State;
 
-    public void SetState(DraggableObjectState state)
+    public void SetState(DraggableObjectState newState)
     {
-        State = state;
+        if (IsTransitionAllowed(State, newState))
+        {
+            State = newState;
+        }
+        else
+        {
+            Debug.Log("Переход запрещен");
+        }
+
     }
 
     public void SetSortingOrder(int order)
@@ -18,12 +26,33 @@ public class DraggableObject : MonoBehaviour
             _spriteRenderer.sortingOrder = order;
         }
     }
+
+    private bool IsTransitionAllowed(DraggableObjectState currentState, DraggableObjectState newState)
+    {
+        switch (currentState)
+        {
+            case DraggableObjectState.Captured:
+                return newState == DraggableObjectState.Dropped || newState == DraggableObjectState.OnShelf || newState == DraggableObjectState.OnGround;
+
+            case DraggableObjectState.Dropped:
+                return newState == DraggableObjectState.Captured || newState == DraggableObjectState.OnShelf /*|| newState == DraggableObjectState.OnGround*/;
+
+            case DraggableObjectState.OnShelf:
+                return newState == DraggableObjectState.Captured;
+
+            case DraggableObjectState.OnGround:
+                return newState == DraggableObjectState.Captured;
+
+            default:
+                return false;
+        }
+    }
 }
 
 public enum DraggableObjectState
 {
-    Idle,
     Captured,
-    OnShelf,
-    Falling
+    Dropped,
+    OnGround,
+    OnShelf
 }

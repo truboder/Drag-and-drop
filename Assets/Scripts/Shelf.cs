@@ -10,7 +10,7 @@ public class Shelf : MonoBehaviour
     {
         DraggableObject draggableObject = collision.GetComponent<DraggableObject>();
 
-        if (draggableObject != null && draggableObject.State == DraggableObjectState.Falling)
+        if (draggableObject != null && draggableObject.State == DraggableObjectState.Dropped)
         {
             PlaceObjectOnShelf(draggableObject);
         }

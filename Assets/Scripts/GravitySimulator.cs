@@ -20,16 +20,28 @@ public class GravitySimulator : MonoBehaviour
         {
             Vector3 position = obj.transform.position;
 
-            if (position.y <= _groundY || obj.State == DraggableObjectState.Captured || obj.State == DraggableObjectState.OnShelf)
+            //if (position.y <= _groundY || obj.State == DraggableObjectState.Captured || obj.State == DraggableObjectState.OnShelf || obj.State == DraggableObjectState.OnGround)
+            //{
+            //    continue;
+            //}
+
+            //position.y -= _gravity * Time.deltaTime;
+
+            //obj.transform.position = new Vector3(position.x, Mathf.Max(position.y, _groundY), position.z);
+
+            //obj.SetState(DraggableObjectState.OnGround);
+
+            if (obj.State != DraggableObjectState.Dropped)
             {
+                obj.SetState(DraggableObjectState.OnGround);
                 continue;
             }
 
-            obj.SetState(DraggableObjectState.Falling);
-
-            position.y -= _gravity * Time.deltaTime;
-           
-            obj.transform.position = new Vector3(position.x, Mathf.Max(position.y, _groundY), position.z);
+            if (position.y <= _groundY)
+            {
+                position.y -= _gravity * Time.deltaTime;
+                obj.transform.position = new Vector3(position.x, Mathf.Max(position.y, _groundY), position.z);
+            }
         }
     }
 }
