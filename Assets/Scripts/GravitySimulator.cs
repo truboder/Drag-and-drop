@@ -22,7 +22,6 @@ public class GravitySimulator : MonoBehaviour
 
             if (obj.State != DraggableObjectState.Dropped)
             {
-
                 continue;
             }
 
