@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Shelf : MonoBehaviour
 {
-    [SerializeField] private Transform _objectPosition;
     [SerializeField] private int _shelfSortingOrder = 1;
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -11,26 +10,16 @@ public class Shelf : MonoBehaviour
 
         if (draggableObject != null && draggableObject.State == DraggableObjectState.Dropped)
         {
-            PlaceObjectOnShelf(draggableObject);
+            PlaceObjectOnShelf(draggableObject, collision.transform.position);
         }
     }
 
-    public void PlaceObjectOnShelf(DraggableObject draggableObject)
+    public void PlaceObjectOnShelf(DraggableObject draggableObject, Vector3 dropPosition)
     {
-        Vector3 shelfPlace = new Vector3(_objectPosition.position.x, _objectPosition.position.y, _objectPosition.position.z);
-
-        MoveObjectWithZ(draggableObject, shelfPlace);
         draggableObject.SetState(DraggableObjectState.OnShelf);
 
-        draggableObject.transform.position = shelfPlace;
+        draggableObject.transform.position = dropPosition;
+
         draggableObject.SetSortingOrder(_shelfSortingOrder);
-    }
-
-    private void MoveObjectWithZ(DraggableObject draggableObject, Vector3 newPosition)
-    {
-        float currentZ = draggableObject.transform.position.z;
-
-        newPosition.z = currentZ;
-        draggableObject.transform.position = newPosition;
     }
 }

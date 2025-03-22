@@ -5,7 +5,7 @@ public class CameraScroller : MonoBehaviour
 {
     [SerializeField] private float _scrollSpeed = 5f;
     [SerializeField] private WorldBounds _worldBounds;
-    [SerializeField] private ObjectMoveProcessor _objectDragger;
+    [SerializeField] private ObjectMoveProcessor _objectMoveProcessor;
 
     private Vector3 _dragOrigin;
     private int _mousseButtonTrigger = 0;
@@ -22,7 +22,7 @@ public class CameraScroller : MonoBehaviour
             _dragOrigin = GetMouseWorldPosition();
         }
 
-        if (Input.GetMouseButton(_mousseButtonTrigger) && _objectDragger.HasTarget == false)
+        if (Input.GetMouseButton(_mousseButtonTrigger) && _objectMoveProcessor.HasTarget == false)
         {
             Vector3 difference = _dragOrigin - GetMouseWorldPosition();
             transform.position += difference;         
