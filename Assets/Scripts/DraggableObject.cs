@@ -14,7 +14,7 @@ public class DraggableObject : MonoBehaviour
         }
         else
         {
-            Debug.Log("Переход запрещен");
+            Debug.Log("Transsion is not allowed");
         }
     }
 
