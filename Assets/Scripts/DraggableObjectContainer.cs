@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class DraggableObjectContainer : MonoBehaviour
 {
+    public static DraggableObjectContainer Singleton { get; private set; }
+
     private List<DraggableObject> _draggableObjects = new List<DraggableObject>();
+
+    private void Awake()
+    {
+        Singleton = this;
+    }
 
     private void Start()
     {

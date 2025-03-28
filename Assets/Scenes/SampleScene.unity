@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 297071653}
   - component: {fileID: 297071652}
   m_Layer: 0
-  m_Name: ObjectManager
+  m_Name: DraggableObjectManager
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -184,6 +184,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -278,7 +279,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scrollSpeed: 5
+--- !u!114 &519420034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dac3a92c46c10d44aa05ef72cfea84f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _worldBounds: {fileID: 11400000, guid: 17ea8b1ef6ea37c4a8a11f483d6e000b, type: 2}
+  _draggableObjectContainer: {fileID: 297071652}
   _objectMoveProcessor: {fileID: 2018757269}
 --- !u!1001 &678485749
 PrefabInstance:

@@ -14,7 +14,9 @@ public class GravitySimulator : MonoBehaviour
 
     private void ApplyGravity()
     {
-        List<DraggableObject> objects = _objectStorage.GetDraggableObjects();
+        //List<DraggableObject> objects = _objectStorage.GetDraggableObjects();
+
+        List<DraggableObject> objects = DraggableObjectContainer.Singleton.GetDraggableObjects();
 
         foreach (DraggableObject obj in objects)
         {

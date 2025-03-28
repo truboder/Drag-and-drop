@@ -4,15 +4,30 @@ using UnityEngine;
 public class CameraScroller : MonoBehaviour
 {
     [SerializeField] private float _scrollSpeed = 5f;
-    [SerializeField] private WorldBounds _worldBounds;
-    [SerializeField] private ObjectMoveProcessor _objectMoveProcessor;
+
+    private WorldBounds _worldBounds;
+    private ObjectMoveProcessor _objectMoveProcessor;
 
     private Vector3 _dragOrigin;
     private int _mousseButtonTrigger = 0;
 
+    private void Awake()
+    {
+        WorldBounds worldBounds = Container.Instance.Get<WorldBounds>();
+        ObjectMoveProcessor objectMoveProcessor = Container.Instance.Get<ObjectMoveProcessor>();
+
+        Construct(worldBounds, objectMoveProcessor);
+    }
+
     private void Update()
     {
         HandleScrolling();
+    }
+
+    private void Construct(WorldBounds worldBounds, ObjectMoveProcessor objectMoveProcessor)
+    {
+        _worldBounds = worldBounds;
+        _objectMoveProcessor = objectMoveProcessor;
     }
 
     private void HandleScrolling()

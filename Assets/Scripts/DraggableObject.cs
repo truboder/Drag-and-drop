@@ -5,6 +5,7 @@ public class DraggableObject : MonoBehaviour
     [SerializeField] SpriteRenderer _spriteRenderer;
 
     public DraggableObjectState State {  get; private set; }
+    public DraggableObjectType Type { get; private set; }
 
     public void SetState(DraggableObjectState newState)
     {
@@ -54,4 +55,12 @@ public enum DraggableObjectState
     Dropped,
     OnGround,
     OnShelf
+}
+
+public enum DraggableObjectType
+{
+    Food,
+    Clothes,
+    Person,
+    Default
 }
