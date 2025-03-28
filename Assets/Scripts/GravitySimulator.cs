@@ -20,6 +20,11 @@ public class GravitySimulator : MonoBehaviour
 
         foreach (DraggableObject obj in objects)
         {
+            if (obj == null) 
+            {
+                continue;
+            }
+
             Vector3 position = obj.transform.position;
 
             if (obj.State != DraggableObjectState.Dropped)
