@@ -49,6 +49,6 @@ public class CharacterItemInteractionSystem : MonoBehaviour
 
     private void ConsumeFood(DraggableObject foodDraggableObject)
     {
-        Destroy(foodDraggableObject);
+        Destroy(foodDraggableObject.gameObject);
     }
 }
